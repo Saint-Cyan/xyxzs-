@@ -1,0 +1,37 @@
+void palindrome_raw(LPSTR t, int length) {
+    cout << "palindrome_raw" << endl;
+    __int64 start = get_local_ft_time();
+
+    int max = 0;                                                  // 最长回文的起点
+    int l_max = 1;                                                // 最长回文的长度(l: length, 长度的意思)
+    for (int i = 1; i < length; i++) {                            // i为对称点
+        int d = 1;                                                // d为回文扩展半径
+        while (i - d >= 0 && i + d < length && 
+               t[i - d] == t[i + d]){                             // 以i为中心对称。aba
+            d++;
+        }
+        d--;
+        if (2 * d + 1 > l_max){
+            max   = i - d;
+            l_max = 2 * d + 1;
+        }
+                                                                  // 循环结束时d总不满足判断条件，所以减1
+        d = 0;                                                    // d为回文扩展半径
+        while (i - d >= 0 && i + 1 + d < length && 
+               t[i - d] == t[i + 1 + d]){                         // 以i后面空隙为中心对称。abba
+            d++;
+        }
+        d--;
+        if (2 * (d + 1) > l_max){
+            max   = i - d;
+            l_max = 2 * (d + 1);
+        }
+    }
+
+    char c = t[max + l_max];
+    t[max + l_max] = 0;
+    cout << t + max << endl;
+    t[max + l_max] = c;
+    __int64 end = get_local_ft_time();
+    cout << "处理时间: " << diff_ft_time_ms(end, start)  << "ms" << endl;
+}
