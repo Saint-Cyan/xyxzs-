@@ -1,0 +1,15 @@
+int huiwenshu(int n){
+	int p;
+	p=n;
+	int k=0;
+	
+	while(p != 0){
+		
+		k=k*10+p%10;
+		p/=10;
+	}
+	if(k == n)
+	return true;
+	else
+	return false;
+}
