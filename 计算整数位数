@@ -1,0 +1,8 @@
+#include<math.h>
+int weishu(int n){
+	int num=0;
+	do{
+		num++;
+	}while(n/(int)pow(10,num));
+	return num;
+} 
