@@ -1,0 +1,62 @@
+#include<stdio.h>
+#define DEBUG 0
+int main(void){
+	int i,j,m,n,k,temp;//i是滤波窗口长度，j是数组长度// 
+
+
+		
+		scanf("%d %d",&i,&j);
+		int a[j],b[i],c[(j-i)+1];
+		
+		if( (i%2) == 0 ){
+			printf("REEOR\n");
+            return 0;
+		}
+		
+		for(m=0;m<j;m++){
+			scanf("%d",&a[m]);
+		}
+		
+		for(m=0;m<(j-i)+1;m++){
+			
+			for(n=m;n<i+m;n++){
+				b[n-m]=a[n];
+				#if DEBUG
+				printf("b[n-m]=%d\n",b[n-m]);
+				#endif
+			}
+						
+			for(k=0;k<i-1;k++)
+			for(n=0;n<i-1;n++)
+				if(b[n]>b[n+1]){
+					
+					temp=b[n+1];
+					b[n+1]=b[n];
+					b[n]=temp;
+				}
+				#if DEBUG
+				for(int x=0;x<i;x++)
+				printf("%d",b[x]);
+				printf("\n");
+				#endif
+				
+			c[m]=b[i/2];		
+		}
+		
+		for(m=0;m<j-i+1;m++){
+			a[i/2+m]=c[m];
+		}
+		#if DEBUG
+		for(int x=0;x<j-i+1;x++)
+		printf("%d",c[x]);
+		printf("\n");
+		#endif
+		
+		for(m=0;m<j;m++){
+			printf("%d ",a[m]);
+		}
+		printf("\n");
+		
+	
+	return 0;
+} 
