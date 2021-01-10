@@ -1,0 +1,29 @@
+#include<stdio.h>
+int main(void)
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+	{
+		int m=0;
+		int a,b,c;
+		scanf("%ld %ld %ld",&a,&b,&c);
+		if(a<b)
+		{
+			m=b;
+			b=a;
+			a=m;
+		}
+		if(a<c)
+		{
+			m=c;
+			c=a;
+			a=m;
+		}
+		if(a*a==b*c)
+		printf("Yes");
+		else
+		printf("No");
+	}
+	return 0;
+ }
