@@ -1,0 +1,79 @@
+#include<stdio.h>
+#define DEBUG 0
+void read_sort(int odd[5],int even[4]);
+void odd_counting_print(int arr[],int n);
+void even_counting_print(int arr[],int n);
+int main(void){
+	int n;
+	scanf("%d",&n);
+	
+	for(int i=0;i<n;i++){
+		int odd[5]={0},even[4]={0};
+		read_sort(odd,even);
+		odd_counting_print(odd,5);
+		even_counting_print(even,4);
+	}
+	return 0;
+}
+void read_sort(int odd[5],int even[4]){
+	int m;
+	char ch;
+	for(;;){
+		scanf("%d%c",&m,&ch);
+		if(ch=='\n'){
+		switch(m){
+			case 1: odd[0]++; break;
+			case 2: even[0]++; break;
+			case 3: odd[1]++; break;
+			case 4: even[1]++; break;
+			case 5: odd[2]++; break;
+			case 6: even[2]++; break;
+			case 7: odd[3]++; break;
+			case 8: even[3]++; break;
+			case 9: odd[4]++; break;
+		}
+		break;
+	    }
+		switch(m){
+			case 1: odd[0]++; break;
+			case 2: even[0]++; break;
+			case 3: odd[1]++; break;
+			case 4: even[1]++; break;
+			case 5: odd[2]++; break;
+			case 6: even[2]++; break;
+			case 7: odd[3]++; break;
+			case 8: even[3]++; break;
+			case 9: odd[4]++; break;
+		}
+	}
+	#if DEBUG 
+	for(int i=0;i<5;i++){
+		printf("%d\n",odd[i]);
+	}
+	for(int i=0;i<4;i++){
+		printf("%d\n",even[i]);
+	}
+	#endif
+	return;
+} 
+void odd_counting_print(int arr[],int n){
+	for(int i=0;i<n;i++){
+		if(arr[i]==0)
+		continue;
+		else
+		for(int j=0;j<arr[i];j++){
+			printf("%d ",2*i+1);
+		}
+    }
+}
+void even_counting_print(int arr[],int n){
+	for(int i=0;i<n;i++){
+		if(arr[i]==0)
+		continue;
+		else
+		for(int j=0;j<arr[i];j++){
+			printf("%d ",2*i+2);
+		}
+    }
+    printf("\n");
+}
