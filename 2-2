@@ -1,0 +1,42 @@
+#include<stdio.h>
+int main(void)
+{
+	int n;
+	scanf("%d",&n);
+	int a[n],d[n],c[n];
+	for(int i=0;i<n;i++)
+	{
+		scanf("%d %d %d",&a[i],&d[i],&c[i]);
+	}
+	for(int i=0;i<n;i++)
+	{
+		int m=0;
+		if(a[i]+d[i]<=c[i])
+		{printf("No\n");
+		continue;}
+		if(c[i]+d[i]<=a[i])
+		{printf("No\n");
+		continue;}
+		if(a[i]+c[i]<=d[i])
+		{printf("No\n");
+		continue;}
+		if(a[i]<d[i])
+		{
+			m=d[i];
+			d[i]=a[i];
+			a[i]=m;
+		}
+		m=0;
+		if(a[i]<c[i])
+		{
+			m=c[i];
+			c[i]=a[i];
+			a[i]=m;
+		}
+		if(a[i]*a[i]==d[i]*d[i]+c[i]*c[i])
+		printf("Yes\n");
+		else
+		printf("No\n");
+	}
+	return 0;
+ }
